@@ -1,0 +1,33 @@
+private static String stringExtractor(String proto){
+        String[] string = proto.split(" ");
+        Random rand = new Random();
+
+        int choice = rand.nextInt()%string.length;
+        choice = (choice < 0) ? choice*(-1) : choice;
+
+
+        //Multiple extractions. Print with percentage
+        Scanner scanner = new Scanner(System.in);
+        int extractionLimit = scanner.nextInt();
+        scanner.nextLine();
+
+        int counter = 0;
+        System.out.println("Enter number of extractions: ");
+        double[] extractions = new double[string.length];
+        while(counter < extractionLimit){
+            choice = rand.nextInt()%string.length;
+            choice = (choice < 0) ? choice*(-1) : choice;
+            extractions[choice] += 1;
+
+            counter++;
+        }
+
+        for(int i = 0; i < string.length; i++){
+            double percentage = (extractions[i]/extractionLimit)*100;
+            System.out.println( string[i] + " viene estratto il " + percentage + "% delle volte");
+        }
+        System.out.println(Arrays.toString(extractions));
+        System.out.println(Arrays.toString(string));
+
+        return string[choice];
+    }
