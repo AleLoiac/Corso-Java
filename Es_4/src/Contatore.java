@@ -4,6 +4,7 @@ public class Contatore {
 
     //costruttore per istanziare con int iniziale
     public Contatore(int conteggioAttuale) {
+
         this.conteggioAttuale = conteggioAttuale;
     }
 
