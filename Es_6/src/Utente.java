@@ -1,15 +1,21 @@
-public class Utente extends Profilo{
+import java.util.Hashtable;
+
+public class Utente extends Profilo {
 
     public Utente(String nome, String password, int pin) {
         super(nome, password);
         this.tipo = tipoUtente.NORMALE;
         this.pin = pin;
         this.myList = new ProdottoInCatalogo[5];
+        this.map = new Hashtable<ProdottoInCatalogo, Integer>();
     }
 
     private String nome;
+    private tipoUtente tipo;
+    private int pin;
+    private ProdottoInCatalogo[] prodotti;
 
-    public enum Avatar{
+    public enum Avatar {
         GATTO,
         CONIGLIO,
         PESCE_ROSSO
@@ -19,21 +25,14 @@ public class Utente extends Profilo{
         NORMALE,
         KID
     }
-
-    private tipoUtente tipo;
-
-    private int pin;
-
     public tipoUtente getTipo() {
         return tipo;
     }
 
-    private ProdottoInCatalogo[] prodotti;
-
-    public void changeTipoUtente(){
-        if(this.tipo.equals(tipoUtente.NORMALE)){
+    public void changeTipoUtente() {
+        if (this.tipo.equals(tipoUtente.NORMALE)) {
             tipo = tipoUtente.KID;
-        }else{
+        } else {
             tipo = tipoUtente.NORMALE;
         }
     }
@@ -42,28 +41,52 @@ public class Utente extends Profilo{
         if (chiediPassword(passwordInserita)) {
             pin = newPin;
             System.out.println("Pin aggiornato " + pin);
-        }
-        else{
+        } else {
             System.out.println("Password Errata");
         }
     }
 
     private ProdottoInCatalogo[] myList;
 
-    public void addProdotto(ProdottoInCatalogo prodotto){
-        for(int i = 0; i < myList.length; i++){
-            if (myList[i] == null){
+    public ProdottoInCatalogo[] addProdotto(ProdottoInCatalogo prodotto) {
+        for (int i = 0; i < myList.length; i++) {
+            if (myList[i] == null) {
                 myList[i] = prodotto;
                 break;
             }
         }
-    }
-
-    public ProdottoInCatalogo[] getMyList() {
         return myList;
     }
 
-    public void voto(String voto){
-
+    public String[] stampaLista() {
+            int n = 0;
+            for (int j = 0; j < myList.length; j++) {
+                if (myList[j] != null) {
+                    n++;
+                }
+            }
+            String[] list = new String[n];
+            for (int i = 0; i < myList.length; i++) {
+                if (myList[i] != null) {
+                    list[i] = myList[i].getTitolo();
+                }
+            }
+            return list;
     }
+
+    Hashtable<ProdottoInCatalogo, Integer> map;
+
+    public void assegnaVoto(ProdottoInCatalogo prod, int i){
+        if (i > 0 && i <= 5 && prod!=null){
+            map.put(prod, i);
+            prod.assegnaVotoUtente(this, i);
+        }
+    }
+
+    public void printValutazioni(){
+        for(ProdottoInCatalogo prod : map.keySet()){
+            System.out.println(prod.getTitolo() + " Valutazione: " + map.get(prod));
+        }
+    }
+
 }

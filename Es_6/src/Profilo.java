@@ -41,4 +41,8 @@ public class Profilo {
             nuovoTipoUtente.changeTipoUtente();
         }
     }
+
+    public String getNome() {
+        return nome;
+    }
 }

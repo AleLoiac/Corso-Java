@@ -1,14 +1,13 @@
-import java.util.PropertyPermission;
-
+import java.util.Hashtable;
 public abstract class ProdottoInCatalogo {
 
     public ProdottoInCatalogo(String titolo, int anno, genere Genere, parentalGuidance PG, originale Or) {
-        //this.prodotti = new ProdottoInCatalogo[numProdotti];
         this.titolo = titolo;
         this.anno = anno;
         this.genere = Genere;
         this.pg = PG;
         this.or = Or;
+        this.voti = new Hashtable<>();
     }
 
     private ProdottoInCatalogo [] prodotti;
@@ -17,10 +16,6 @@ public abstract class ProdottoInCatalogo {
 
     public String getTitolo() {
         return titolo;
-    }
-
-    public void setTitolo(String titolo) {
-        this.titolo = titolo;
     }
 
     private genere genere;
@@ -32,6 +27,8 @@ public abstract class ProdottoInCatalogo {
     private originale or;
 
     private String [] cast; //fare array di oggetti Attore[]
+
+    private Hashtable<Utente, Integer> voti;
 
     public enum genere {
         ANIMAZIONE,
@@ -54,6 +51,18 @@ public abstract class ProdottoInCatalogo {
     public enum originale {
         ORIGINALE,
         REMAKE
+    }
+
+    public void assegnaVotoUtente(Utente utente, int i){
+        if(utente!=null){
+            voti.put(utente, i);
+        }
+    }
+
+    public void printVotiUtenti(){
+        for(Utente utente : voti.keySet()){
+            System.out.println(utente.getNome() + " Voto: " + voti.get(utente));
+        }
     }
 
 }

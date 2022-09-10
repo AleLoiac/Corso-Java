@@ -19,6 +19,13 @@ public class Main_Streaming {
 
         GinoRossi.addProdotto(Troy);
         GinoRossi.addProdotto(Inception);
-        System.out.println(Arrays.toString((GinoRossi.getMyList())));
+        System.out.println(Arrays.toString((GinoRossi.stampaLista())));
+        GinoRossi.assegnaVoto(Troy, 5);
+        GinoRossi.assegnaVoto(Gold, 3);
+        GinoRossi.printValutazioni();
+
+        Utente MarioBianchi = new Utente("Mario", "1111", 12);
+        MarioBianchi.assegnaVoto(Gold, 5);
+        Gold.printVotiUtenti();
     }
 }
