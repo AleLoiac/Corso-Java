@@ -7,7 +7,7 @@ public class Nodo <T>{
 
     private T value;
 
-    private T pointer;
+    private Nodo pointer;
 
     public T getValue() {
         return value;
@@ -17,11 +17,11 @@ public class Nodo <T>{
         this.value = value;
     }
 
-    public T getPointer() {
+    public Nodo getPointer() {
         return pointer;
     }
 
-    public void setPointer(T pointer) {
+    public void setPointer(Nodo pointer) {
         this.pointer = pointer;
     }
 }
