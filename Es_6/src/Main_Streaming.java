@@ -55,5 +55,6 @@ public class Main_Streaming {
 
         catalogo1.generiUguali(Troy);
         catalogo1.generiUguali(Game_of_Thrones);
+        catalogo1.popolari(GinoRossi, MarioBianchi);
     }
 }

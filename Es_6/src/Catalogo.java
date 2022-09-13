@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.*;
 
 public class Catalogo {
 
@@ -44,4 +44,27 @@ public class Catalogo {
         }
         System.out.println("");
     }
+
+    public void popolari (Utente utente1, Utente utente2){
+        List<ProdottoInCatalogo> li = new ArrayList<>(this.catalogo);
+        li.sort(new Comparator<ProdottoInCatalogo>() {
+            @Override
+            public int compare(ProdottoInCatalogo o1, ProdottoInCatalogo o2) {
+                return o2.getMediaValutazioni()-o1.getMediaValutazioni();
+            }
+        });
+
+        for (ProdottoInCatalogo prodottoInCatalogo : li) {
+            System.out.println(prodottoInCatalogo.getTitolo() + " Valutazioni: " + prodottoInCatalogo.getMediaValutazioni());
+        }
+    }
+
+    Map<ProdottoInCatalogo, Integer> map;
+
+    public void putInt(ProdottoInCatalogo prodotto){
+            this.map.put(prodotto, prodotto.getMediaValutazioni());
+    }
+
+
+
 }

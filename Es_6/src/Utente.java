@@ -50,6 +50,10 @@ public class Utente extends Profilo {
 
     private ProdottoInCatalogo[] myList;
 
+    public ProdottoInCatalogo[] getMyList() {
+        return myList;
+    }
+
     public ProdottoInCatalogo[] addProdotto(ProdottoInCatalogo prodotto) {
         for (int i = 0; i < myList.length; i++) {
             if (myList[i] == null) {

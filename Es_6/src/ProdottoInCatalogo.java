@@ -61,6 +61,14 @@ public abstract class ProdottoInCatalogo {
 
     private HashMap<Utente, Integer> voti;
 
+    public int getMediaValutazioni(){
+        int sum = 0;
+        for(Utente utente : voti.keySet()){
+            sum += voti.get(utente);
+        }
+        return (voti.size()>0) ? (sum / voti.size()) : 0;
+    }
+
     public void assegnaVotoUtente(Utente utente, int i){
         if(utente!=null){
             voti.put(utente, i);
