@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 public abstract class ProdottoInCatalogo {
 
     public ProdottoInCatalogo(String titolo, int anno, genere Genere, parentalGuidance PG, originale Or) {
@@ -8,7 +7,7 @@ public abstract class ProdottoInCatalogo {
         this.genere = Genere;
         this.pg = PG;
         this.or = Or;
-        this.voti = new Hashtable<>();
+        this.voti = new HashMap<>();
 
         for (int i = 0; i < prodotti.length; i++) {
             if (prodotti[i] == null) {
@@ -60,7 +59,7 @@ public abstract class ProdottoInCatalogo {
         REMAKE
     }
 
-    private Hashtable<Utente, Integer> voti;
+    private HashMap<Utente, Integer> voti;
 
     public void assegnaVotoUtente(Utente utente, int i){
         if(utente!=null){
@@ -74,24 +73,49 @@ public abstract class ProdottoInCatalogo {
         }
     }
 
+
     public ProdottoInCatalogo.genere getGenere() {
         //System.out.println(genere);
         return genere;
     }
 
-    public String[] generiUguali(){
+//    public void generiUguali(){
+//        System.out.print(this.titolo + " stesso genere: ");
+//        String[] generi = new String[6];
+//        int counter = 0;
+//        for (int i =0; i<6; i++){
+//            if(prodotti[i]!=null && this.genere.equals(prodotti[i].getGenere())){
+//                generi[counter] = prodotti[i].getTitolo();
+//                counter++;
+//            }
+//        }
+//
+//        for(int i = 0; i <counter; i++){
+//            System.out.print(generi[i] + " ");
+//        }
+//        System.out.println("");
+//    }
+
+    public void genereConsiglio(){
+        System.out.print("Consigliati per "+this.titolo+": ");
         String[] generi = new String[6];
         int counter = 0;
         for (int i =0; i<6; i++){
-            if(prodotti[i]!=null && this.genere.equals(prodotti[i].getGenere())){
+            if(prodotti[i]!=null && this.genere.equals(prodotti[i].getGenere())){ //&& this.titolo!=prodotti[i].titolo inserire per eliminare doppione
                 generi[counter] = prodotti[i].getTitolo();
                 counter++;
             }
         }
-
-        for(int i = 0; i <counter; i++){
-            System.out.println(generi[i]);
+        for(int i = 0; i < counter; i++){
+            System.out.print(generi[i] + " ");
         }
-        return generi;
     }
+
+    public int getVoto(Utente utente){
+        if (voti.containsKey(utente)){
+            return voti.get(utente);
+        }
+        return 0;
+    }
+
 }

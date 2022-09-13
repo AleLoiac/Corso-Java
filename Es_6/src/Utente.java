@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Hashtable;
 
 public class Utente extends Profilo {
@@ -13,6 +14,7 @@ public class Utente extends Profilo {
     private String nome;
     private tipoUtente tipo;
     private int pin;
+
     private ProdottoInCatalogo[] prodotti;
 
     public enum Avatar {
@@ -59,19 +61,20 @@ public class Utente extends Profilo {
     }
 
     public String[] stampaLista() {
-            int n = 0;
-            for (int j = 0; j < myList.length; j++) {
-                if (myList[j] != null) {
-                    n++;
-                }
+        System.out.print("Lista di " + this.getNome() + " ");
+        int n = 0;
+        for (int j = 0; j < myList.length; j++) {
+            if (myList[j] != null) {
+                n++;
             }
-            String[] list = new String[n];
-            for (int i = 0; i < myList.length; i++) {
-                if (myList[i] != null) {
-                    list[i] = myList[i].getTitolo();
-                }
+        }
+        String[] list = new String[n];
+        for (int i = 0; i < myList.length; i++) {
+            if (myList[i] != null) {
+                list[i] = myList[i].getTitolo();
             }
-            return list;
+        }
+        return list;
     }
 
     Hashtable<ProdottoInCatalogo, Integer> map;
@@ -89,4 +92,15 @@ public class Utente extends Profilo {
         }
     }
 
+    public void consigli (){
+        for (int i = 0; i < myList.length; i++){
+            if (myList[i] != null && (myList[i].getVoto(this) > 3)){
+                myList[i].genereConsiglio();
+            }
+            if (myList[i] != null) {
+                System.out.println(" ");
+            }
+            else break;
+        }
+    }
 }

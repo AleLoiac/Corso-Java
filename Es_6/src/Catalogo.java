@@ -1,11 +1,13 @@
 import java.util.List;
 
 public class Catalogo {
-    private List<ProdottoInCatalogo> catalogo;
 
     public Catalogo(List<ProdottoInCatalogo> catalogo) {
         this.catalogo = catalogo;
     }
+
+    private List<ProdottoInCatalogo> catalogo;
+
 
     public void printCatalogo(){
         for(ProdottoInCatalogo prod : catalogo){
@@ -15,5 +17,31 @@ public class Catalogo {
 
     public List<ProdottoInCatalogo> getCatalogo() {
         return catalogo;
+    }
+
+    public void categoriaUguale (ProdottoInCatalogo prodotto){
+        System.out.print("Categoria "+prodotto.getClass().getSimpleName()+": ");
+        for (int i = 0; i < catalogo.size(); i++){
+            if (prodotto.getClass().getSimpleName().equals(catalogo.get(i).getClass().getSimpleName())){
+                System.out.print(catalogo.get(i).getTitolo()+", ");
+            }
+        }
+        System.out.println(" ");
+    }
+
+    public void generiUguali(ProdottoInCatalogo prodotto){
+        System.out.print(prodotto.getTitolo() + " stesso genere: ");
+        String[] generi = new String[5];
+        int counter = 0;
+        for (int i =0; i<catalogo.size(); i++){
+            if(catalogo.get(i)!=null && prodotto.getGenere().equals(catalogo.get(i).getGenere())){
+                generi[counter] = catalogo.get(i).getTitolo();
+                counter++;
+            }
+        }
+        for(int i = 0; i <counter; i++){
+            System.out.print(generi[i] + ", ");
+        }
+        System.out.println("");
     }
 }
