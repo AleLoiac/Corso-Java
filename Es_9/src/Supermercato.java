@@ -30,14 +30,18 @@ public class Supermercato {
         System.out.println("");
     }
 
+    public void serviCliente (){
+        System.out.println("Servo "+codaSupermercato.poll().getNome());
+    }
+
     public void nextCliente (){
         System.out.print("Prossimo cliente " + this.nome+ ": ");
-        System.out.println(codaSupermercato.poll().getNome());
+        System.out.println(codaSupermercato.peek().getNome());
     }
 
     public void count (){
         System.out.print("Numero clienti " + this.nome+ ": ");
-        System.out.println(codaSupermercato.size()+1);
+        System.out.println(codaSupermercato.size());
     }
 
     public class ComparatorClienti implements Comparator<Cliente> {

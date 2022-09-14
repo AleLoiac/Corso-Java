@@ -26,6 +26,8 @@ public class Main_Supermercato {
         Conad.printCoda();
 
         Iper.nextCliente();
+        Iper.serviCliente();
+        Iper.nextCliente();
         Conad.nextCliente();
 
         Iper.count();
