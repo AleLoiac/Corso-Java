@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -5,33 +6,47 @@ public class Supermercato {
 
     public Supermercato(String nome) {
         this.nome = nome;
-        this.codaSupermercato = new PriorityQueue<>();
+        this.codaSupermercato = new PriorityQueue<>(new ComparatorClienti());
     }
 
     private String nome;
 
-    private Queue<String> codaSupermercato;
+    private Queue<Cliente> codaSupermercato;
 
     public void addToCoda (Cliente cliente){
-        codaSupermercato.add(cliente.getNome());
+        codaSupermercato.add(cliente);
     }
 
     public void removeFromCoda (Cliente cliente){
-        codaSupermercato.remove(cliente.getNome());
+        codaSupermercato.remove(cliente);
     }
 
     public void printCoda (){
-        for (String Cliente : codaSupermercato) {
-            System.out.println(Cliente);
+        System.out.print("Coda " + this.nome+ ": ");
+        for (Cliente cliente : codaSupermercato) {
+            System.out.print(cliente.getNome() + " ");
         }
+        System.out.println("");
     }
 
-    //brutto
     public void nextCliente (){
-        for (String Cliente : codaSupermercato) {
-            System.out.println(Cliente);
-            break;
-        }
+        System.out.print("Prossimo cliente " + this.nome+ ": ");
+        System.out.println(codaSupermercato.poll().getNome());
     }
 
+    public void count (){
+        System.out.print("Numero clienti " + this.nome+ ": ");
+        System.out.println(codaSupermercato.size()+1);
+    }
+
+    class ComparatorClienti implements Comparator<Cliente> {
+
+        public int compare (Cliente s1, Cliente s2) {
+            if (s1.getEta() < s2.getEta())
+                return 1;
+            else if (s1.getEta() > s2.getEta())
+                return -1;
+            return 0;
+        }
+    }
 }
