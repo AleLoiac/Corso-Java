@@ -25,6 +25,7 @@ public class Supermercato {
         System.out.print("Coda " + this.nome+ ": ");
         for (Cliente cliente : codaSupermercato) {
             System.out.print(cliente.getNome() + " ");
+            System.out.print("("+cliente.getEta() + ") ");
         }
         System.out.println("");
     }
