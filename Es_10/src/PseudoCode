@@ -1,0 +1,60 @@
+Classi: Superclasse Veicolo (astratta)
+                    ID (String)
+                    Disponibile/non (boolean)
+                    Posizione geografica (String)
+                    Prezzo (double)
+
+                    -getters- tutto
+                    -setters- disponibilità, posizione geografica
+
+        Sottoclasse VeicoliImmatricolati
+                    carburante (enum)
+                    targa (String)
+                    patente necessaria (-controllo-)
+
+                    -getters- tutto
+                    -setters- carburante
+
+        Sottoclassi Automobile
+
+                    Moto
+
+                    Furgoncino
+
+        Sottoclassi Bicicletta
+                    casco (-controllo-)
+
+                    Monopattino elettrico
+                    casco (-controllo-)
+                    elettricità (enum) (riciclare enum carburante)
+
+                    -getters- tutto
+                    -setters- elettricità
+
+             Classe Utente
+                    nome (String)
+                    cognome (String)
+                    data di nascita (String)
+                    codice fiscale (String)
+                    ID (String)
+                    tipo patente (enum)
+                    casco (boolean)
+                    credito (double)
+
+                    -getters- tutto
+                    -setters- patente, credito
+
+           Database HashMap (ID, Veicolo) (registro tutti veicoli)
+                            aggiungi veicolo
+                    HashMap (IDveicolo, IDutente) (veicoli affittati)
+                    HashSet (Utenti) (Utenti registrati)
+
+                    -getters- tutti
+
+            Sistema -Registra Utente-
+                    -Registra veicolo-
+                    -Affitta veicolo-
+                    -Restituisci veicolo-
+                    -Cerca veicolo-
+                    -Aggiungi credito-
+
