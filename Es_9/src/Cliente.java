@@ -1,4 +1,4 @@
-public class Cliente {
+public class Cliente /*implements Comparable*/{
 
     public Cliente(String nome, String cognome, int id, int eta) {
         this.nome = nome;
@@ -21,5 +21,13 @@ public class Cliente {
     public String getNome() {
         return nome;
     }
+
+    //@Override
+    //public int compareTo(Object o){
+    //    Cliente a1 = (Cliente) o;
+    //    Integer e1 = this.eta;
+    //    Integer e2 = a1.eta;
+    //    return e1.compareTo(e2);
+    //}
 
 }

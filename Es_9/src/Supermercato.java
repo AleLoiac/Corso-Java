@@ -39,7 +39,7 @@ public class Supermercato {
         System.out.println(codaSupermercato.size()+1);
     }
 
-    class ComparatorClienti implements Comparator<Cliente> {
+    public class ComparatorClienti implements Comparator<Cliente> {
 
         public int compare (Cliente s1, Cliente s2) {
             if (s1.getEta() < s2.getEta())
