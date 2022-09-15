@@ -7,7 +7,7 @@ public class Main_Dizionario {
 
         Significato significatoAbaco = new Significato("Antico pallottoliere o altro primitivo strumento per far di conto.");
 
-        zanichelli.addSignificato(abaco, significatoAbaco);
+        zanichelli.addParola(abaco, significatoAbaco);
 
     }
 }

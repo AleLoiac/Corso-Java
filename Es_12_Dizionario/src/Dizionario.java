@@ -15,7 +15,7 @@ public class Dizionario {
 
     public void setNome(String nome) {this.nome = nome;}
 
-    //public void addParola(Lettera l, Parola p, Significato s){
-    //    dizionario.put(l (p, s));
-    //}
+    public void addParola(Parola p, Significato s){
+        parole.put(p, s);
+    }
 }
