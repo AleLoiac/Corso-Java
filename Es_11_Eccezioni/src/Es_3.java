@@ -1,7 +1,8 @@
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Es_3 {
+public class Es_3 extends Exception{
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
@@ -17,13 +18,13 @@ public class Es_3 {
                 if (randomInt==0){
                     throw new ArithmeticException();
                 }
-            }catch (ArithmeticException a){
+            }catch (ArithmeticException ae){
                 System.out.println("E' uscito 0, aggiungo 1");
                 randomInt+=1;
             }
             divisione = n / randomInt;
-        } catch (Exception f) {
-            System.out.println("Mismatch :"+f);
+        } catch (InputMismatchException ime) {
+            System.out.println("Mismatch");
         } finally {
             System.out.println(divisione);
         }

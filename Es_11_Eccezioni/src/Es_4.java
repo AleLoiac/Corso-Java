@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Es_4 {
@@ -10,15 +11,24 @@ public class Es_4 {
         int n = 0;
         input = new Scanner(System.in);
         System.out.println("Inserisci posizione:");
-        n = input.nextInt();
+        try {
+            n = input.nextInt();
+        }catch (InputMismatchException ime){
+                System.out.println("Input non valido");
+        }
 
         input = new Scanner(System.in);
         System.out.println("Inserisci numero:");
-        int i = input.nextInt();
+        int i = 0;
+        try{
+            i = input.nextInt();
+        }catch (InputMismatchException ime){
+            System.out.println("Input non valido");
+        }
 
         try {
             array[n] = i;
-        }catch (Exception e){
+        }catch (ArrayIndexOutOfBoundsException aioob){
             System.out.println("Fuori dall'array");
         }
 
