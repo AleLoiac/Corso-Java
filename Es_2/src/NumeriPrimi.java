@@ -1,4 +1,4 @@
-public class Main {
+public class NumeriPrimi {
 
     public static void main(String[] args) {
         int number = 0;

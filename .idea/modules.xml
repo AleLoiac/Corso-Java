@@ -4,20 +4,15 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Es_0/Es_0.iml" filepath="$PROJECT_DIR$/Es_0/Es_0.iml" />
       <module fileurl="file://$PROJECT_DIR$/Es_1/Es_1.iml" filepath="$PROJECT_DIR$/Es_1/Es_1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Es_10/Es_10.iml" filepath="$PROJECT_DIR$/Es_10/Es_10.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Es_2_1/Es_2_1.iml" filepath="$PROJECT_DIR$/Es_2_1/Es_2_1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Es_2_2/Es_2_2.iml" filepath="$PROJECT_DIR$/Es_2_2/Es_2_2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Es_2_3/Es_2_3.iml" filepath="$PROJECT_DIR$/Es_2_3/Es_2_3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Es_2_4/Es_2_4.iml" filepath="$PROJECT_DIR$/Es_2_4/Es_2_4.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Es_2_5/Es_2_5.iml" filepath="$PROJECT_DIR$/Es_2_5/Es_2_5.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Es_2_6/Es_2_6.iml" filepath="$PROJECT_DIR$/Es_2_6/Es_2_6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Es_10_SharedMobility/Es_10_SharedMobility.iml" filepath="$PROJECT_DIR$/Es_10_SharedMobility/Es_10_SharedMobility.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Es_2/Es_2.iml" filepath="$PROJECT_DIR$/Es_2/Es_2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Es_3/Es_3.iml" filepath="$PROJECT_DIR$/Es_3/Es_3.iml" />
       <module fileurl="file://$PROJECT_DIR$/Es_4/Es_4.iml" filepath="$PROJECT_DIR$/Es_4/Es_4.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Es_5/Es_5.iml" filepath="$PROJECT_DIR$/Es_5/Es_5.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Es_6/Es_6.iml" filepath="$PROJECT_DIR$/Es_6/Es_6.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Es_7/Es_7.iml" filepath="$PROJECT_DIR$/Es_7/Es_7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Es_5_SerieA_Distributore/Es_5_SerieA_Distributore.iml" filepath="$PROJECT_DIR$/Es_5_SerieA_Distributore/Es_5_SerieA_Distributore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Es_6_StreamingService/Es_6_StreamingService.iml" filepath="$PROJECT_DIR$/Es_6_StreamingService/Es_6_StreamingService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Es_7_LinkedList/Es_7_LinkedList.iml" filepath="$PROJECT_DIR$/Es_7_LinkedList/Es_7_LinkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/Es_8/Es_8.iml" filepath="$PROJECT_DIR$/Es_8/Es_8.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Es_9/Es_9.iml" filepath="$PROJECT_DIR$/Es_9/Es_9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Es_9_Supermercato/Es_9_Supermercato.iml" filepath="$PROJECT_DIR$/Es_9_Supermercato/Es_9_Supermercato.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Java.iml" filepath="$PROJECT_DIR$/.idea/Java.iml" />
     </modules>
   </component>

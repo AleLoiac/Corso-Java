@@ -1,4 +1,4 @@
-public class Main {
+public class Factorial {
 
     public static void main(String[] args) {
         System.out.println(factorial(1) == (0));

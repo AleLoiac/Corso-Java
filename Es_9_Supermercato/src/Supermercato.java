@@ -10,7 +10,6 @@ public class Supermercato {
     }
 
     private String nome;
-
     private Queue<Cliente> codaSupermercato;
 
     public void addToCoda (Cliente cliente){

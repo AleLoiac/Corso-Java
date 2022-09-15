@@ -7,11 +7,8 @@ public class Cliente /*implements Comparable*/{
         this.eta = eta;
     }
     private String nome;
-
     private String cognome;
-
     private int id;
-
     private int eta;
 
     public int getEta() {

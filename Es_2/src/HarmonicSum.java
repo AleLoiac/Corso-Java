@@ -1,4 +1,4 @@
-public class Main {
+public class HarmonicSum {
     public static void main(String[] args) {
         System.out.println(harmonicSum(0) == (0));
         System.out.println(harmonicSum(1) == (1));
