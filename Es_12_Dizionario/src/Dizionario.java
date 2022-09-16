@@ -7,7 +7,6 @@ public class Dizionario {
 
     public Dizionario(String nome) {
         this.nome = nome;
-        this.dizionario = dizionario;
     }
 
     public String getNome() {return nome;}
