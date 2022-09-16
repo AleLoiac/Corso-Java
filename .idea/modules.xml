@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Corso Java.iml" filepath="$PROJECT_DIR$/.idea/Corso Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Es_0/Es_0.iml" filepath="$PROJECT_DIR$/Es_0/Es_0.iml" />
       <module fileurl="file://$PROJECT_DIR$/Es_1/Es_1.iml" filepath="$PROJECT_DIR$/Es_1/Es_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Es_10_SharedMobility/Es_10_SharedMobility.iml" filepath="$PROJECT_DIR$/Es_10_SharedMobility/Es_10_SharedMobility.iml" />
@@ -16,7 +17,6 @@
       <module fileurl="file://$PROJECT_DIR$/Es_7_LinkedList/Es_7_LinkedList.iml" filepath="$PROJECT_DIR$/Es_7_LinkedList/Es_7_LinkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/Es_8/Es_8.iml" filepath="$PROJECT_DIR$/Es_8/Es_8.iml" />
       <module fileurl="file://$PROJECT_DIR$/Es_9_Supermercato/Es_9_Supermercato.iml" filepath="$PROJECT_DIR$/Es_9_Supermercato/Es_9_Supermercato.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/Java.iml" filepath="$PROJECT_DIR$/.idea/Java.iml" />
     </modules>
   </component>
 </project>
