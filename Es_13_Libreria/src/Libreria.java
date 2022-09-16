@@ -62,7 +62,6 @@ public class Libreria {
         for (Libro libro : libreria.values()) {
             if (libro.getAutore().equals(autore)) {
                 codaLibri.add(libro);
-                //System.out.print(libro.getTitolo()+": "+libro.getSinossi()+"\n");
             } else {
                 System.out.println("Autore non trovato");
             }
