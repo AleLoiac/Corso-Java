@@ -51,4 +51,10 @@ public class Dizionario {
         }
     }
 
+    public void stampaCarattere(Character c){
+        if (dizionario.containsKey(c)){
+            System.out.println(dizionario.get(c));
+        }
+    }
+
 }

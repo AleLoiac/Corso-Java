@@ -11,6 +11,8 @@ public class Main_Dizionario {
         zanichelli.addParola('c', "cane", "Animale da compagnia");
 
         zanichelli.stampa();
-        zanichelli.stampaParola('a', "abaco");
+        zanichelli.stampaCarattere('b');
+        zanichelli.stampaParola('b', "banana");
+
     }
 }
