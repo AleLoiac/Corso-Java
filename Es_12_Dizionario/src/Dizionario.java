@@ -1,21 +1,54 @@
-import java.util.TreeMap;
+import java.util.*;
 
 public class Dizionario {
     private String nome;
-    private TreeMap<Lettera, TreeMap<Parola, Significato>> dizionario = new TreeMap<>();
-    private TreeMap<Parola, Significato> parole = new TreeMap<>();
+    private TreeMap<Character, HashMap<String, HashSet<String>>> dizionario = new TreeMap<>();
+
 
     public Dizionario(String nome) {
         this.nome = nome;
+        this.dizionario = dizionario;
     }
 
     public String getNome() {return nome;}
-    public TreeMap<Parola, Significato> getParole() {return parole;}
-    public TreeMap<Lettera, TreeMap<Parola, Significato>> getDizionario() {return dizionario;}
-
     public void setNome(String nome) {this.nome = nome;}
+    public TreeMap<Character, HashMap<String, HashSet<String>>> getDizionario() {return dizionario;}
 
-    public void addParola(Parola p, Significato s){
-        parole.put(p, s);
+
+    public void addParola(Character lettera, String parola, String significato){
+        HashMap<String, HashSet<String>> parole = new HashMap<>();
+        HashSet<String> significati = new HashSet<>();
+        parola = parola.toLowerCase();
+        significato = significato.toLowerCase();
+        if (!dizionario.containsKey(lettera)) {
+            significati.add(significato);
+            parole.put(parola, significati);
+            dizionario.put(lettera, parole);
+        }
+        else if (dizionario.containsKey(lettera)) {
+            parole = dizionario.get(lettera);
+            if (parole.containsKey(parola)) {
+                significati = parole.get(parola);
+                significati.add(significato);
+                parole.put(parola, significati);
+                dizionario.put(lettera, parole);
+            }
+            else{
+                significati.add(significato);
+                parole.put(parola, significati);
+                dizionario.put(lettera, parole);
+            }
+        }
     }
+
+    public void stampa(){
+        System.out.println(dizionario);
+    }
+
+    public void stampaParola(Character c, String parola){
+        if (dizionario.containsKey(c) && (dizionario.get(c).containsKey(parola))){
+            System.out.println(parola+"="+dizionario.get(c).get(parola));
+        }
+    }
+
 }

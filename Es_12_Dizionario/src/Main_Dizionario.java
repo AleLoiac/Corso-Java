@@ -3,11 +3,14 @@ public class Main_Dizionario {
 
         Dizionario zanichelli = new Dizionario("Zanichelli");
 
-        Parola abaco = new Parola("Abaco");
+        zanichelli.addParola('a', "abaco", "Antico pallottoliere");
+        zanichelli.addParola('a', "abaco", "Giochino");
+        zanichelli.addParola('b', "banana", "Frutto");
+        zanichelli.addParola('b', "banana", "Unità di misura");
+        zanichelli.addParola('b', "bruco", "Insetto");
+        zanichelli.addParola('c', "cane", "Animale da compagnia");
 
-        Significato significatoAbaco = new Significato("Antico pallottoliere o altro primitivo strumento per far di conto.");
-
-        zanichelli.addParola(abaco, significatoAbaco);
-
+        zanichelli.stampa();
+        zanichelli.stampaParola('a', "abaco");
     }
 }
