@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.TreeMap;
 
 public class Tinder {
     private HashMap<Utente, HashSet<Interesse>> sistema = new HashMap<>();
@@ -14,7 +15,7 @@ public class Tinder {
     }
 
     public void addInteresse (Utente utente, Interesse interesse){
-        HashSet<Interesse> temp = new HashSet<>();
+        HashSet<Interesse> temp;
         if (sistema.containsKey(utente)){
             temp = sistema.get(utente);
             temp.add(interesse);
@@ -54,6 +55,31 @@ public class Tinder {
             }
         }
         return x;
+    }
+
+    public int punti (Utente utente){
+        int punti = 0;
+        for (Utente u : sistema.keySet()){
+            if (u.equals(utente)){
+                continue;
+            }
+            if (pointsMatch(utente, u) > punti){
+                punti = pointsMatch(utente, u);
+            }
+        }
+        return punti;
+    }
+
+    public Object topMatch (){
+        TreeMap<Integer, HashSet<String>> classifica = new TreeMap<>();
+        HashSet<String> utenti = new HashSet<>();
+        for (Utente u : sistema.keySet()){
+            utenti.add(u.getNome());
+            utenti.add(bestMatch(u).getNome());
+            classifica.put(punti(u), utenti);
+            utenti = new HashSet<>();
+        }
+        return classifica.get(classifica.lastKey());
     }
 
     public void stampaTinder (){ System.out.println(sistema); }
