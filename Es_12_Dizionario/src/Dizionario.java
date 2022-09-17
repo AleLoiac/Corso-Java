@@ -44,13 +44,16 @@ public class Dizionario {
         System.out.println(dizionario);
     }
 
-    public void stampaParola(Character c, String parola){
+    public void stampaParola(Character c, String parola)throws WordNotPresent, LetterNotPresent{
+        if (!dizionario.containsKey(c)) throw new LetterNotPresent();
+        if (!dizionario.get(c).containsKey(parola)) throw new WordNotPresent();
         if (dizionario.containsKey(c) && (dizionario.get(c).containsKey(parola))){
             System.out.println(parola+"="+dizionario.get(c).get(parola));
         }
     }
 
-    public void stampaCarattere(Character c){
+    public void stampaCarattere(Character c)throws LetterNotPresent{
+        if (!dizionario.containsKey(c)) throw new LetterNotPresent();
         if (dizionario.containsKey(c)){
             System.out.println(dizionario.get(c));
         }

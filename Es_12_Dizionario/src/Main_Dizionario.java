@@ -11,8 +11,35 @@ public class Main_Dizionario {
         zanichelli.addParola('c', "cane", "Animale da compagnia");
 
         zanichelli.stampa();
-        zanichelli.stampaCarattere('b');
-        zanichelli.stampaParola('b', "banana");
+
+        try{
+            zanichelli.stampaCarattere('b');
+        }catch (LetterNotPresent lnp){
+            System.out.println(lnp.getMessage());
+        }
+
+
+        //catches su stessa riga
+        try {
+            zanichelli.stampaParola('b', "banana");
+        }catch (WordNotPresent | LetterNotPresent wplp){
+            System.out.println(wplp.getMessage());
+        }
+
+        //catches su righe differenti
+        try {
+            zanichelli.stampaParola('b', "gnegne");
+        }catch (WordNotPresent wnp){
+            System.out.println(wnp.getMessage());
+        }catch (LetterNotPresent lnp){
+            System.out.println(lnp.getMessage());
+        }
+
+        try{
+            zanichelli.stampaCarattere('x');
+        }catch (LetterNotPresent lnp){
+            System.out.println(lnp.getMessage());
+        }
 
     }
 }
