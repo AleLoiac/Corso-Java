@@ -24,23 +24,21 @@ public class Libreria {
         System.out.println(libreria);
     }
 
-    public void cercaLibroPerCodice (String codice){
+    public void cercaLibroPerCodice (String codice) throws LibroNonTrovato{
+        if (!libreria.containsKey(codice)) throw new LibroNonTrovato();
         if (libreria.containsKey(codice)){
             System.out.println(libreria.get(codice).getTitolo());
         }
-        else{
-            System.out.println("Libro non trovato");
-        }
     }
 
-    public void cercaLibroPerTitolo (String titolo){
+    public void cercaLibroPerTitolo (String titolo) throws LibroNonTrovato{
         for (Libro libro : libreria.values()) {
             if (libro.getTitolo().equals(titolo)){
-                System.out.println(libro.getCodiceLibro());
+                System.out.println("Codice libro: "+libro.getCodiceLibro());
                 break;
             }
             else{
-                System.out.println("Libro non trovato");
+                throw new LibroNonTrovato();
             }
         }
     }
@@ -51,7 +49,7 @@ public class Libreria {
                 System.out.print(libro.getTitolo()+", ");
             }
             else{
-                System.out.println("Libro non trovato");
+                System.out.println("Autore non trovato");
             }
         }
         System.out.println("");

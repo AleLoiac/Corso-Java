@@ -16,9 +16,29 @@ public class Main_Libreria {
 
         BibliotecaDiAlessandria.stampaLibreria();
 
-        BibliotecaDiAlessandria.cercaLibroPerCodice("3");
-        BibliotecaDiAlessandria.cercaLibroPerCodice("4");
-        BibliotecaDiAlessandria.cercaLibroPerTitolo("Alexandros");
+        try {
+            BibliotecaDiAlessandria.cercaLibroPerCodice("3");
+        }catch (LibroNonTrovato lnt){
+            System.out.println(lnt.getMessage());
+        }
+        try {
+            BibliotecaDiAlessandria.cercaLibroPerCodice("4");
+        }catch (LibroNonTrovato lnt){
+            System.out.println(lnt.getMessage());
+        }
+
+        try {
+            BibliotecaDiAlessandria.cercaLibroPerTitolo("Alexandros");
+        }catch (LibroNonTrovato lnt){
+            System.out.println(lnt.getMessage());
+        }
+
+        try {
+            BibliotecaDiAlessandria.cercaLibroPerTitolo("Baluba");
+        }catch (LibroNonTrovato lnt){
+            System.out.println(lnt.getMessage());
+        }
+
         BibliotecaDiAlessandria.cercaLibroPerAutore(ValerioMassimo);
 
         BibliotecaDiAlessandria.stampaPerAutore(ValerioMassimo);
