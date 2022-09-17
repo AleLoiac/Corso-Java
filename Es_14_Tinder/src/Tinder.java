@@ -82,5 +82,10 @@ public class Tinder {
         return classifica.get(classifica.lastKey());
     }
 
-    public void stampaTinder (){ System.out.println(sistema); }
+    public void stampaTinder (){
+        for (Utente u: sistema.keySet()) {
+            System.out.print(u.getNome()+" ");
+            System.out.println(sistema.get(u));
+        }
+    }
 }

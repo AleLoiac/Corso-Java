@@ -9,9 +9,9 @@ public class Main_Tinder {
         Utente Marco = new Utente("Marco","Rossi");
         Utente Gino = new Utente("Gino","Frassino");
 
-        Interesse leggere = new Interesse("L", "Leggere dei libri");
-        Interesse arrampicarsi = new Interesse("A", "Arrampicarsi sugli alberi");
-        Interesse parlare = new Interesse("P", "parlare ai cani");
+        Interesse leggere = new Interesse("LEG", "Leggere dei libri");
+        Interesse arrampicarsi = new Interesse("ARR", "Arrampicarsi sugli alberi");
+        Interesse parlare = new Interesse("PAR", "parlare ai cani");
 
         tinder.addUtente(Gianni, leggere);
         tinder.addInteresse(Gianni, arrampicarsi);
@@ -28,7 +28,7 @@ public class Main_Tinder {
         tinder.addUtente(Marco, arrampicarsi);
 
         tinder.addUtente(Gino, arrampicarsi);
-        //tinder.stampaTinder();
+        tinder.stampaTinder();
 
         System.out.println(tinder.pointsMatch(Franca, Gianni));
         System.out.println(tinder.pointsMatch(Franca, Maura));

@@ -7,8 +7,12 @@ public class Interesse {
         this.testo = testo;
     }
 
+    @Override
+    public String toString() {
+        return getCodice();
+    }
+
     public String getCodice() {return codice;}
     public String getTesto() {return testo;}
-
     public void setTesto(String testo) {this.testo = testo;}
 }
