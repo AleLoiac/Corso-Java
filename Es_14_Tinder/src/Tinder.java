@@ -30,7 +30,9 @@ public class Tinder {
         sistema.remove(utente);
     }
 
-    public int pointsMatch (Utente utente1, Utente utente2){
+    public int pointsMatch (Utente utente1, Utente utente2)throws UserNotFound{
+        if(!sistema.containsKey(utente1))throw new UserNotFound();
+        if(!sistema.containsKey(utente2))throw new UserNotFound();
         HashSet<Interesse> utente1temp = sistema.get(utente1);
         HashSet<Interesse> utente2temp = sistema.get(utente2);
         int points = 0;
@@ -42,7 +44,8 @@ public class Tinder {
         return points;
     }
 
-    public Utente bestMatch (Utente utente){
+    public Utente bestMatch (Utente utente) throws UserNotFound {
+        if(!sistema.containsKey(utente))throw new UserNotFound();
         int punti = 0;
         Utente x = null;
         for (Utente u : sistema.keySet()){
@@ -57,7 +60,8 @@ public class Tinder {
         return x;
     }
 
-    public int punti (Utente utente){
+    public int punti (Utente utente) throws UserNotFound {
+        if(!sistema.containsKey(utente))throw new UserNotFound();
         int punti = 0;
         for (Utente u : sistema.keySet()){
             if (u.equals(utente)){
@@ -70,7 +74,7 @@ public class Tinder {
         return punti;
     }
 
-    public Object topMatch (){
+    public Object topMatch () throws UserNotFound {
         TreeMap<Integer, HashSet<String>> classifica = new TreeMap<>();
         HashSet<String> utenti = new HashSet<>();
         for (Utente u : sistema.keySet()){

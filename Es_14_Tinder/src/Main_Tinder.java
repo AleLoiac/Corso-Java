@@ -30,11 +30,28 @@ public class Main_Tinder {
         tinder.addUtente(Gino, arrampicarsi);
         tinder.stampaTinder();
 
-        System.out.println(tinder.pointsMatch(Franca, Gianni));
-        System.out.println(tinder.pointsMatch(Franca, Maura));
+        try {
+            System.out.println(tinder.pointsMatch(Franca, Gianni));
+        }catch (UserNotFound usf){
+            System.out.println(usf.getMessage());
+        }
+        try {
+            System.out.println(tinder.pointsMatch(Franca, Maura));
+        }catch (UserNotFound usf){
+            System.out.println(usf.getMessage());
+        }
 
-        System.out.println(tinder.bestMatch(Franca).getNome());
+        try {
+            System.out.println(tinder.bestMatch(Franca).getNome());
+        }catch (UserNotFound usf){
+            System.out.println(usf.getMessage());
+        }
 
-        System.out.println(tinder.topMatch());
+        try {
+            System.out.println(tinder.topMatch());
+        }catch (UserNotFound usf){
+            System.out.println(usf.getMessage());
+        }
+
     }
 }
