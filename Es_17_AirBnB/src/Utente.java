@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class Utente {
     public enum tipoUtente {NORMALE, HOST, SUPERHOST}
     private List<Abitazione> mieAbitazioni = new ArrayList<>();
     private LinkedList<Prenotazione> miePrenotazioni = new LinkedList<>();
+    private HashMap<Prenotazione, Feedback> mieiFeedback = new HashMap<>();
 
     public Utente(String nomeCognome, String email, String indirizzo) {
         this.nomeCognome = nomeCognome;
@@ -30,6 +32,7 @@ public class Utente {
     public Utente.tipoUtente getTipo() {return tipo;}
     public void setTipo(Utente.tipoUtente tipo) {this.tipo = tipo;}
 
+    //rendere addAbitazione non funzionante se l'abitazione è già contenuta in una lista miaLista di host
     public void addAbitazione (Abitazione abitazione){
         if (!this.tipo.equals(tipoUtente.NORMALE)) {
             mieAbitazioni.add(abitazione);
@@ -41,15 +44,24 @@ public class Utente {
     }
     public List<Abitazione> getMieAbitazioni() {return mieAbitazioni;}
 
-    public void addPrenotazione (Prenotazione prenotazione){
-        miePrenotazioni.add(prenotazione);
-    }
+    //rendere addPrenotazione non funzionante se l'abitazione non è in nessuna list mieAbitazioni degli host
+    public void addPrenotazione (Prenotazione prenotazione){miePrenotazioni.add(prenotazione);}
+    public LinkedList<Prenotazione> getMiePrenotazioni() {return miePrenotazioni;}
 
     public Prenotazione lastPrenotazione (){
         return miePrenotazioni.peekLast();
     }
 
-    public void lasciaFeedback (){
-
+    public void lasciaFeedback (Feedback feedback, Prenotazione prenotazione){
+        for (Prenotazione p : miePrenotazioni) {
+            if (p.equals(prenotazione)){
+                mieiFeedback.put(prenotazione, feedback);
+                System.out.println("Valutazione aggiunta");
+                break;
+            }
+            else {
+                System.out.println("Non hai ancora soggiornato in quest'abitazione");
+            }
+        }
     }
 }
