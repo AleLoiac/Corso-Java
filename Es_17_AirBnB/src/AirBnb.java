@@ -3,8 +3,25 @@ import java.time.LocalDate;
 
 public class AirBnb {
 
-    private List<Utente> host = new ArrayList<>();
-    private List<Utente> utenti = new ArrayList<>();
+//    private static AirBnb singletonInstance;
+//
+//    private AirBnb() {}
+//
+//    public static AirBnb getInstance() {
+//        if (singletonInstance != null) return singletonInstance;
+//        singletonInstance = new AirBnb();
+//        return singletonInstance;
+//    }
+    private HashSet<Utente> utenti = new HashSet<>();
+    private HashSet<Utente> host = new HashSet<>();
+
+    public List<String> getListaUtenti() {
+        List<String> listaUtenti = new ArrayList<>();
+        for (Utente u:utenti) {
+            listaUtenti.add(u.getNomeCognome());
+        }
+        return listaUtenti;
+    }
 
     public void changeToHost(Utente utente, String codice) {
         if (utente.getTipo().equals(Utente.tipoUtente.NORMALE)) {
@@ -14,7 +31,7 @@ public class AirBnb {
     }
 
     public void addHost (Utente u){
-        if (!u.getTipo().equals(Utente.tipoUtente.NORMALE)){
+        if (!u.getTipo().equals(Utente.tipoUtente.NORMALE) && utenti.contains(u)){
             host.add(u);
             System.out.println("Utente aggiunto");
         }
@@ -66,13 +83,13 @@ public class AirBnb {
             }
         });
         Collections.reverse(tempHashset);
-        System.out.println(tempHashset);
+        //System.out.println(tempHashset);
         System.out.println(tempHashset.get(0));
 
         return numPrenotazioni;
     }
 
-    public HashMap miglioriHost () {
+    public List miglioriHost () {
         HashMap<String, Integer> numHost = new HashMap<>();
         for (Utente u : host) {
             for (Utente i : utenti) {
@@ -86,7 +103,15 @@ public class AirBnb {
                 }
             }
         }
-        return numHost;
+        List<Map.Entry<String, Integer>> tempHashset = new ArrayList<>(numHost.entrySet());
+        tempHashset.sort(new Comparator<>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+        Collections.reverse(tempHashset);
+        return tempHashset;
     }
     
     public List listaSuperHost (){
@@ -99,7 +124,7 @@ public class AirBnb {
         return listaSuperHost();
     }
 
-    public HashMap giorniUtente (){
+    public List giorniUtente (){
         HashMap<String, Long> giorniUtente = new HashMap<>();
         long sommaGiorni = 0;
         for (Utente u: utenti) {
@@ -109,7 +134,29 @@ public class AirBnb {
             giorniUtente.put(u.getNomeCognome(), sommaGiorni);
             sommaGiorni = 0;
         }
-        return giorniUtente;
+        List<Map.Entry<String, Long>> tempHashset = new ArrayList<>(giorniUtente.entrySet());
+        tempHashset.sort(new Comparator<>() {
+            @Override
+            public int compare(Map.Entry<String, Long> o1, Map.Entry<String, Long> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+        Collections.reverse(tempHashset);
+
+        HashMap<String, Long> temp2 = new HashMap<>();
+        for (int i = 0; i < 5; i++) {
+            temp2.put(tempHashset.get(i).getKey(), tempHashset.get(i).getValue());
+        }
+
+        List<Map.Entry<String, Long>> temp3 = new ArrayList<>(temp2.entrySet());
+        temp3.sort(new Comparator<>() {
+            @Override
+            public int compare(Map.Entry<String, Long> o1, Map.Entry<String, Long> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+        Collections.reverse(temp3);
+        return temp3;
     }
 
     public int mediaLetti (){
@@ -124,7 +171,6 @@ public class AirBnb {
         for (Integer i : numLetti) {
             somma = i + somma;
         }
-        int media = somma / tot;
-        return media;
+        return somma / tot;
     }
 }

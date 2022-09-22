@@ -7,10 +7,19 @@ public class Main_AirBnB {
         Utente Pietro = new Utente("Pietro Pinna", "pietruccio@gmail.com", "Via Monte dei Paschi");
         Utente Marco = new Utente("Marco Mastri", "mastrota@gmail.com", "Via Pinco Pallo");
         Utente Gianni = new Utente("Gianni Fantoni", "fanti@gmail.com", "Via dei polli");
+        Utente Pina = new Utente("Pina Muzzu", "pinuccia@gmail.com", "Via coi pecuri");
+        Utente Mara = new Utente("Mara Venier", "maraa@gmail.com", "Via col vento");
+        Utente Gennara = new Utente("Gennara Giunco", "ggggiunco@gmail.com", "Via brombeis");
 
         sistema.addUtente(Pietro);
         sistema.addUtente(Marco);
         sistema.addUtente(Gianni);
+        sistema.addUtente(Pina);
+        sistema.addUtente(Mara);
+        sistema.addUtente(Gennara);
+        sistema.addUtente(Gennara);
+        //controllo se rimuove i duplicati
+        System.out.println(sistema.getListaUtenti());
 
         Abitazione villaPalla = new Abitazione("vp1", "Villa Palla", "Via della palla", 8, 4, 0);
         Abitazione appFlavio = new Abitazione("af1", "Appartamento Flavio", "Via dei Flavi", 3, 2, 4);

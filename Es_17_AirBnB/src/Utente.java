@@ -32,7 +32,7 @@ public class Utente {
     public Utente.tipoUtente getTipo() {return tipo;}
     public void setTipo(Utente.tipoUtente tipo) {this.tipo = tipo;}
 
-    //rendere addAbitazione non funzionante se l'abitazione è già contenuta in una lista miaLista di host
+    //rendere addAbitazione non funzionante se l'abitazione è già contenuta in una lista mieAbitazioni di un host
     public void addAbitazione (Abitazione abitazione){
         if (!this.tipo.equals(tipoUtente.NORMALE)) {
             mieAbitazioni.add(abitazione);
@@ -45,7 +45,9 @@ public class Utente {
     public List<Abitazione> getMieAbitazioni() {return mieAbitazioni;}
 
     //rendere addPrenotazione non funzionante se l'abitazione non è in nessuna list mieAbitazioni degli host
-    public void addPrenotazione (Prenotazione prenotazione){miePrenotazioni.add(prenotazione);}
+    public void addPrenotazione (Prenotazione prenotazione){
+        miePrenotazioni.add(prenotazione);
+    }
     public LinkedList<Prenotazione> getMiePrenotazioni() {return miePrenotazioni;}
 
     public Prenotazione lastPrenotazione (){
