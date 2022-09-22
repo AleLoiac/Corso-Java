@@ -32,9 +32,8 @@ public class Utente {
     public Utente.tipoUtente getTipo() {return tipo;}
     public void setTipo(Utente.tipoUtente tipo) {this.tipo = tipo;}
 
-    //rendere addAbitazione non funzionante se l'abitazione è già contenuta in una lista mieAbitazioni di un host
     public void addAbitazione (Abitazione abitazione){
-        if (!this.tipo.equals(tipoUtente.NORMALE)) {
+        if (!this.tipo.equals(tipoUtente.NORMALE) && !mieAbitazioni.contains(abitazione)) {
             mieAbitazioni.add(abitazione);
             System.out.println("Aggiunto alle tue abitazioni");
         }
@@ -46,7 +45,9 @@ public class Utente {
 
     //rendere addPrenotazione non funzionante se l'abitazione non è in nessuna list mieAbitazioni degli host
     public void addPrenotazione (Prenotazione prenotazione){
-        miePrenotazioni.add(prenotazione);
+        if (!miePrenotazioni.contains(prenotazione) && !mieAbitazioni.contains(prenotazione.getAbitazione())){
+            miePrenotazioni.add(prenotazione);
+        }
     }
     public LinkedList<Prenotazione> getMiePrenotazioni() {return miePrenotazioni;}
 

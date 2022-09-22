@@ -1,3 +1,6 @@
+import Errori.EmailNonTrovata;
+import Errori.IDNonTrovato;
+
 import java.time.LocalDate;
 
 public class Main_AirBnB {
@@ -19,7 +22,7 @@ public class Main_AirBnB {
         sistema.addUtente(Gennara);
         sistema.addUtente(Gennara);
         //controllo se rimuove i duplicati
-        System.out.println(sistema.getListaUtenti());
+        System.out.println(sistema.getNomiUtenti());
 
         Abitazione villaPalla = new Abitazione("vp1", "Villa Palla", "Via della palla", 8, 4, 0);
         Abitazione appFlavio = new Abitazione("af1", "Appartamento Flavio", "Via dei Flavi", 3, 2, 4);
@@ -36,26 +39,41 @@ public class Main_AirBnB {
         sistema.addHost(Pietro);
         sistema.addHost(Marco);
 
-        System.out.println(sistema.idToAbitazioni("pp94"));
-        System.out.println(sistema.idToAbitazioni("fggf"));
+        try {
+            System.out.println(sistema.idToAbitazioni("pp94"));
+        } catch (IDNonTrovato idnt) {
+            System.out.println(idnt.getMessage());
+        }
+        try {
+            System.out.println(sistema.idToAbitazioni("fggf"));
+        } catch (IDNonTrovato idnt) {
+            System.out.println(idnt.getMessage());
+        }
 
         Prenotazione prenotazione1 = new Prenotazione("P1vp", LocalDate.of(2022, 9, 10), LocalDate.of(2022, 9, 20), villaPalla, Pietro);
         Prenotazione prenotazione2 = new Prenotazione("P2aa", LocalDate.of(2022, 9, 12), LocalDate.of(2022, 9, 21), appAugusto, Pietro);
         Prenotazione prenotazione3 = new Prenotazione("P3af", LocalDate.of(2022, 9, 7), LocalDate.of(2022, 9, 14), appFlavio, Marco);
         Prenotazione prenotazione4 = new Prenotazione("P4vp", LocalDate.of(2022, 9, 5), LocalDate.of(2022, 9, 9), villaPalla, Gianni);
 
+        //prova a prenotarselo da solo e quindi la prenotazione 1 non aggiunge ore a pietro e non viene conteggiata
         Pietro.addPrenotazione(prenotazione1);
+
         Pietro.addPrenotazione(prenotazione2);
         Marco.addPrenotazione(prenotazione3);
         Gianni.addPrenotazione(prenotazione4);
 
-        System.out.println(sistema.idToUltimaPrenotaz("pp94"));
+        try {
+            System.out.println(sistema.emailToUltimaPrenotazione("pietruccio@gmail.com"));
+        } catch (EmailNonTrovata ent) {
+            System.out.println(ent.getMessage());
+        }
 
-        Feedback feedbackVillaPalla = new Feedback("vp", "Che cesso", "Era tutto zozzo", Feedback.punteggio.CINQUE);
+        Feedback feedbackVillaPalla = new Feedback("aa", "Che cesso", "Era tutto zozzo", Feedback.punteggio.CINQUE);
 
-        Pietro.lasciaFeedback(feedbackVillaPalla, prenotazione1);
+        Pietro.lasciaFeedback(feedbackVillaPalla, prenotazione2);
         Marco.lasciaFeedback(feedbackVillaPalla, prenotazione1);
 
+        //fa la media solo su 2 appartamenti perchè il terzo non è ancora stato aggiunto nel sistema di affitto
         System.out.println(sistema.mediaLetti());
 
         System.out.println(sistema.abitazioneGettonata());

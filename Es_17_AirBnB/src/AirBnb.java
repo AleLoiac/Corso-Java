@@ -1,3 +1,6 @@
+import Errori.EmailNonTrovata;
+import Errori.IDNonTrovato;
+
 import java.util.*;
 import java.time.LocalDate;
 
@@ -15,12 +18,26 @@ public class AirBnb {
     private HashSet<Utente> utenti = new HashSet<>();
     private HashSet<Utente> host = new HashSet<>();
 
-    public List<String> getListaUtenti() {
+    public List<String> getNomiUtenti() {
         List<String> listaUtenti = new ArrayList<>();
         for (Utente u:utenti) {
             listaUtenti.add(u.getNomeCognome());
         }
         return listaUtenti;
+    }
+
+    public void addUtente (Utente u){
+        utenti.add(u);
+    }
+
+    public void addHost (Utente u){
+        if (!u.getTipo().equals(Utente.tipoUtente.NORMALE) && utenti.contains(u)){
+            host.add(u);
+            System.out.println("Host aggiunto");
+        }
+        else{
+            System.out.println("L'utente non è host, conferma prima il passaggio ad host");
+        }
     }
 
     public void changeToHost(Utente utente, String codice) {
@@ -30,36 +47,22 @@ public class AirBnb {
         }
     }
 
-    public void addHost (Utente u){
-        if (!u.getTipo().equals(Utente.tipoUtente.NORMALE) && utenti.contains(u)){
-            host.add(u);
-            System.out.println("Utente aggiunto");
-        }
-        else{
-            System.out.println("L'utente non è host");
-        }
-    }
-
-    public List idToAbitazioni (String codice){
+    public List idToAbitazioni (String codice) throws IDNonTrovato {
         for (Utente u : host) {
-            if(codice.equals(u.getCodiceHost())){
+            if (codice.equals(u.getCodiceHost())) {
                 return u.getMieAbitazioni();
             }
         }
-        return null;
+        throw new IDNonTrovato();
     }
 
-    public void addUtente (Utente u){
-        utenti.add(u);
-    }
-
-    public Prenotazione idToUltimaPrenotaz (String codice){
-        for (Utente u : utenti){
-            if(codice.equals(u.getCodiceHost())){
+    public Prenotazione emailToUltimaPrenotazione (String email) throws EmailNonTrovata {
+        for (Utente u : utenti) {
+            if (email.equals(u.getEmail())) {
                 return u.lastPrenotazione();
             }
         }
-        return null;
+        throw new EmailNonTrovata();
     }
 
     public HashMap abitazioneGettonata (){
@@ -83,7 +86,6 @@ public class AirBnb {
             }
         });
         Collections.reverse(tempHashset);
-        //System.out.println(tempHashset);
         System.out.println(tempHashset.get(0));
 
         return numPrenotazioni;
@@ -121,7 +123,7 @@ public class AirBnb {
                 listaSuperHost().add(h);
             }
         }
-        return listaSuperHost();
+        return superhost;
     }
 
     public List giorniUtente (){
