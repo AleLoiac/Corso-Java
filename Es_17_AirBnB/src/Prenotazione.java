@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Prenotazione {
     private String id;
@@ -15,11 +16,15 @@ public class Prenotazione {
         this.nomeUtente = nomeUtente;
     }
     public LocalDate getDataInizio() {return dataInizio;}
-
     public Abitazione getNomeAbitazione() {return nomeAbitazione;}
 
     @Override
     public String toString() {
         return id;
+    }
+
+    public long durataPrenotazione (){
+        long durata = ChronoUnit.DAYS.between(dataInizio, dataFine);
+        return durata;
     }
 }

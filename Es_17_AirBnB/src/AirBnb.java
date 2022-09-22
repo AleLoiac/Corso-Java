@@ -89,6 +89,19 @@ public class AirBnb {
         return listaSuperHost();
     }
 
+    public HashMap giorniUtente (){
+        HashMap<String, Long> giorniUtente = new HashMap<>();
+        long sommaGiorni = 0;
+        for (Utente u: utenti) {
+            for (Prenotazione p: u.getMiePrenotazioni()) {
+                sommaGiorni = sommaGiorni + p.durataPrenotazione();
+            }
+            giorniUtente.put(u.getNomeCognome(), sommaGiorni);
+            sommaGiorni = 0;
+        }
+        return giorniUtente;
+    }
+
     public int mediaLetti (){
         List<Integer> numLetti = new ArrayList<>();
         for (Utente u: host) {

@@ -56,5 +56,9 @@ public class Main_AirBnB {
         Marco.addAbitazione(appAugusto);
 
         System.out.println(sistema.miglioriHost());
+
+        System.out.println(prenotazione1.durataPrenotazione());
+
+        System.out.println(sistema.giorniUtente());
     }
 }
