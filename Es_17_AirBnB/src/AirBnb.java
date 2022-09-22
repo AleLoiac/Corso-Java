@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.time.LocalDate;
 
 public class AirBnb {
@@ -51,14 +49,26 @@ public class AirBnb {
         HashMap<Abitazione, Integer> numPrenotazioni = new HashMap<>();
         for (Utente u:utenti) {
             for (Prenotazione p: u.getMiePrenotazioni()) {
-                if (p.getDataInizio().isAfter(LocalDate.now().minusDays(30)) && !numPrenotazioni.containsKey(p.getNomeAbitazione())) {
-                    numPrenotazioni.put(p.getNomeAbitazione(), 1);
+                if (p.getDataInizio().isAfter(LocalDate.now().minusDays(30)) && !numPrenotazioni.containsKey(p.getAbitazione())) {
+                    numPrenotazioni.put(p.getAbitazione(), 1);
                 }
-                else if (p.getDataInizio().isAfter(LocalDate.now().minusDays(30)) && numPrenotazioni.containsKey(p.getNomeAbitazione())) {
-                    numPrenotazioni.put(p.getNomeAbitazione(), numPrenotazioni.get(p.getNomeAbitazione()) + 1);
+                else if (p.getDataInizio().isAfter(LocalDate.now().minusDays(30)) && numPrenotazioni.containsKey(p.getAbitazione())) {
+                    numPrenotazioni.put(p.getAbitazione(), numPrenotazioni.get(p.getAbitazione()) + 1);
                 }
             }
         }
+        //Ordino la mappa la inverto e printo il primo risultato
+        List<Map.Entry<Abitazione, Integer>> tempHashset = new ArrayList<>(numPrenotazioni.entrySet());
+        tempHashset.sort(new Comparator<>() {
+            @Override
+            public int compare(Map.Entry<Abitazione, Integer> o1, Map.Entry<Abitazione, Integer> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+        Collections.reverse(tempHashset);
+        System.out.println(tempHashset);
+        System.out.println(tempHashset.get(0));
+
         return numPrenotazioni;
     }
 
@@ -67,10 +77,10 @@ public class AirBnb {
         for (Utente u : host) {
             for (Utente i : utenti) {
                 for (Prenotazione p: i.getMiePrenotazioni()) {
-                    if (p.getDataInizio().isAfter(LocalDate.now().minusDays(30)) && u.getMieAbitazioni().contains(p.getNomeAbitazione()) && !numHost.containsKey(u.getNomeCognome())) {
+                    if (p.getDataInizio().isAfter(LocalDate.now().minusDays(30)) && u.getMieAbitazioni().contains(p.getAbitazione()) && !numHost.containsKey(u.getNomeCognome())) {
                     numHost.put(u.getNomeCognome(), 1);
                     }
-                    else if (p.getDataInizio().isAfter(LocalDate.now().minusDays(30)) && u.getMieAbitazioni().contains(p.getNomeAbitazione()) && numHost.containsKey(u.getNomeCognome())) {
+                    else if (p.getDataInizio().isAfter(LocalDate.now().minusDays(30)) && u.getMieAbitazioni().contains(p.getAbitazione()) && numHost.containsKey(u.getNomeCognome())) {
                         numHost.put(u.getNomeCognome(), numHost.get(u.getNomeCognome()) + 1);
                     }
                 }

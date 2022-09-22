@@ -42,7 +42,7 @@ public class Main_AirBnB {
 
         System.out.println(sistema.idToUltimaPrenotaz("pp94"));
 
-        Feedback feedbackVillaPalla = new Feedback("vp", "Che cesso", "Era tutto zozzo", Feedback.punteggio.DUE);
+        Feedback feedbackVillaPalla = new Feedback("vp", "Che cesso", "Era tutto zozzo", Feedback.punteggio.CINQUE);
 
         Pietro.lasciaFeedback(feedbackVillaPalla, prenotazione1);
         Marco.lasciaFeedback(feedbackVillaPalla, prenotazione1);
