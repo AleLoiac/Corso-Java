@@ -28,5 +28,6 @@ public class Abitazione {
     @Override
     public String toString() {
         return nome;
+
     }
 }
