@@ -17,6 +17,7 @@ public class Prenotazione {
     }
     public LocalDate getDataInizio() {return dataInizio;}
     public Abitazione getAbitazione() {return abitazione;}
+    public Utente getNomeUtente() {return nomeUtente;}
 
     @Override
     public String toString() {

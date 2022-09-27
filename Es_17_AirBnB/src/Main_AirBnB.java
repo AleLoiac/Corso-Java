@@ -86,6 +86,5 @@ public class Main_AirBnB {
         System.out.println(prenotazione1.durataPrenotazione());
 
         System.out.println(sistema.giorniUtente());
-
     }
 }

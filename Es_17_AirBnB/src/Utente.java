@@ -49,6 +49,7 @@ public class Utente {
             miePrenotazioni.add(prenotazione);
         }
     }
+
     public LinkedList<Prenotazione> getMiePrenotazioni() {return miePrenotazioni;}
 
     public Prenotazione lastPrenotazione (){
