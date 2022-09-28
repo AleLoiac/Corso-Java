@@ -10,4 +10,5 @@ public class Main_Teatro {
         Utente utente1 = new Utente("\'Gianni\'", "\'Fantoni\'","\'gianni5@gmail.com\'", "\'Via_dei_Franchi5\'", "\'3334455666\'");
         sistema.registraUtente(utente1);
     }
+
 }
