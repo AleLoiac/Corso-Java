@@ -5,14 +5,14 @@ import java.sql.Statement;
 
 public class ConnectionHandler {
 
-    public static final String DB_URL = "jdbc:postgresql://localhost:5432/";
+    public static final String DB_URL = "jdbc:postgresql://localhost:5432";
 
     public final String connectionUrl;
 
     private Connection connection;
 
     public ConnectionHandler(String dbUrl, String dbName, String schema, String username, String password) throws ClassNotFoundException {
-        this.connectionUrl = dbUrl + dbName
+        this.connectionUrl = dbUrl + "/" + dbName
                 + "?currentSchema=" + schema
                 + "&user=" + username
                 + "&password=" + password;
